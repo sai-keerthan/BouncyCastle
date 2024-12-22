@@ -22,9 +22,6 @@ public class Encryption {
     public String finalEncryptedData = null;
     public String certificateLocation = null;
 
-    public void setPublicCertificate(X509Certificate publicCertificate) {
-        this.publicCertificate = publicCertificate;
-    }
 
     public void setDataToBeEncrypted(byte[] dataToBeEncrypted) {
         this.dataToBeEncrypted = dataToBeEncrypted;
@@ -61,11 +58,7 @@ public class Encryption {
 
             this.finalEncryptedData = formattedData;
 
-        } catch (CertificateEncodingException e) {
-            throw new RuntimeException(e);
-        } catch (CMSException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (CertificateEncodingException | CMSException | IOException e) {
             throw new RuntimeException(e);
         }
 
